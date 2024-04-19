@@ -2,41 +2,18 @@ using UnityEngine;
 
 public class Bait : MonoBehaviour
 {
-    // Reference to the creature that will be lured
-    public GameObject creature;
-
-    // Flag to track if the bait has been triggered
-    private bool triggered = false;
-
-    // Method called when another collider enters the trigger collider of the bait
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
-        // Check if the collider belongs to the ground
-        if (other.CompareTag("Ground"))
+        if (other.CompareTag("Creature"))
         {
-            // Set the flag to indicate that the bait has been triggered
-            triggered = true;
+            LureCreature(other.GetComponent<Creature>());
+            Destroy(gameObject); // Destroy the bait after luring
         }
     }
 
-    // Method to lure the creature
-    private void LureCreature()
+    private void LureCreature(Creature creature)
     {
-        // Check if the creature reference is set and the bait has been triggered
-        if (creature != null && triggered)
-        {
-            // Instantiate the creature at the position of the bait
-            Instantiate(creature, transform.position, Quaternion.identity);
-
-            // Destroy the bait GameObject
-            Destroy(gameObject);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Call the method to lure the creature
-        LureCreature();
+        Debug.Log("Creature lured to Bait!");
+        // Add lure behavior here (e.g., make the creature move towards the bait)
     }
 }

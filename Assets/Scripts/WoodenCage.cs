@@ -9,9 +9,15 @@ public class WoodenCage : MonoBehaviour
             Creature creature = other.GetComponent<Creature>();
             if (creature != null)
             {
-                // Call the TrappedByCage method on the creature
-                creature.TrappedByCage();
+                CaptureCreature(creature);
             }
         }
+    }
+
+    private void CaptureCreature(Creature creature)
+    {
+        Debug.Log("Creature captured by WoodenCage!");
+        creature.Capture();
+        // Add capture behavior here (e.g., disable movement)
     }
 }

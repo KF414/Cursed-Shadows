@@ -7,15 +7,16 @@ TagManager:
   - Ground
   - Bait
   - Creature
+  - WoodenCage
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
+  - Creature
+  - WoodenCage
   - 
   - 
   - 
